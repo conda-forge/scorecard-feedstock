@@ -1,6 +1,6 @@
 context:
   name: scorecard
-  version: "5.2.0"
+  version: "5.2.1"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   - url: https://github.com/ossf/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: ab90cd14a29c28ec80f5769217afad64c298d64e08ee61943fa6d0645e22e625
+    sha256: f73d5212de4f67f143258a64664af6906aa7fcad2188b66c3beabd46871e2f62
     target_directory: src
 
 build:

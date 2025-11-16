@@ -1,6 +1,6 @@
 context:
   name: scorecard
-  version: "5.3.0"
+  version: "5.4.0"
 
 package:
   name: ${{ name|lower }}
@@ -8,16 +8,19 @@ package:
 
 source:
   - url: https://github.com/ossf/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: 4fbcb442071d5e463c8d20f8bc8ac52502e874e06a395887469c84335f4b21fb
+    sha256: ced44f7743f5d58713731291fa8d3b50be2037d2dd56323cdeaedd944a3b5331
     target_directory: src
   - url: https://raw.githubusercontent.com/in-toto/attestation/cf4dd91962480c5106007d3f8bfb2731e6eced4a/LICENSE
     sha256: b3a6ac899861c2c28a1abd5c7ea8733fefaed6938d730e099c42671386032aeb
     file_name: LICENSE-intoto
+  - url: https://raw.githubusercontent.com/deitch/magic/2def47b612f6f806d1e136bbec1c34fdefacf04a/LICENSE
+    sha256: b3a6ac899861c2c28a1abd5c7ea8733fefaed6938d730e099c42671386032aeb
+    file_name: LICENSE-magic
 
 build:
   script:
     - cd src
-    - go-licenses save . --save_path ../library_licenses --ignore github.com/in-toto/attestation
+    - go-licenses save . --save_path ../library_licenses --ignore github.com/in-toto/attestation --ignore github.com/deitch/magic
     - if: win
       then: go build -v -buildmode=pie -trimpath -modcacherw -o %LIBRARY_BIN%\scorecard.exe -ldflags="-s"
       else: go build -v -buildmode=pie -trimpath -modcacherw -o $PREFIX/bin/scorecard -ldflags="-s -w"
@@ -40,6 +43,7 @@ about:
     - src/LICENSE
     - library_licenses/
     - LICENSE-intoto
+    - LICENSE-magic
   repository: https://github.com/ossf/scorecard
   documentation: https://scorecard.dev
 

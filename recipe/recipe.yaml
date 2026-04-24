@@ -1,6 +1,6 @@
 context:
   name: scorecard
-  version: "5.4.0"
+  version: "5.5.0"
 
 package:
   name: ${{ name|lower }}
@@ -8,13 +8,13 @@ package:
 
 source:
   - url: https://github.com/ossf/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: ced44f7743f5d58713731291fa8d3b50be2037d2dd56323cdeaedd944a3b5331
+    sha256: 5b341000131035ef2aac5b8aa329176f5441beae46369e3d46019633ca736b5e
     target_directory: src
   - url: https://raw.githubusercontent.com/in-toto/attestation/cf4dd91962480c5106007d3f8bfb2731e6eced4a/LICENSE
-    sha256: b3a6ac899861c2c28a1abd5c7ea8733fefaed6938d730e099c42671386032aeb
+    sha256: 2423c6eb9948e617a61f7a2d1cb463c69d60e599fbae5931551631d2a8730838
     file_name: LICENSE-intoto
   - url: https://raw.githubusercontent.com/deitch/magic/2def47b612f6f806d1e136bbec1c34fdefacf04a/LICENSE
-    sha256: b3a6ac899861c2c28a1abd5c7ea8733fefaed6938d730e099c42671386032aeb
+    sha256: 2423c6eb9948e617a61f7a2d1cb463c69d60e599fbae5931551631d2a8730838
     file_name: LICENSE-magic
 
 build:
